@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias bat="cat /sys/class/power_supply/BAT?/capacity"
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -v"
+
+# Colorize commands when possible.
+alias ls="ls -hN --color=auto --group-directories-first"
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+
+# Handy
+alias v="$EDITOR"
+alias t="tmux"
+alias i="sudo apt install"
+alias htop="bb"
+alias ssleep='sudo shutdown -h '
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
+## cfg
+alias pkg='nvim -o ~/.config/packages/crates.csv ~/.config/packages/pkg.csv'
+alias bashrc='nvim ~/.bashrc'
+alias zshrc='nvim ~/.config/zsh/.zshrc'
+alias aliasrc='nvim ~/.config/aliasrc'
+alias profile='nvim ~/.profile'
+alias vimrc='nvim ~/.config/nvim/init.vim'
+alias i3config='nvim ~/.config/i3/config'
+alias polybarconf='nvim ~/.config/polybar/config'
+alias tmuxconf='nvim ~/.tmux.conf.local'
+
+## git
+alias ggpull='git pull origin $(git_current_branch)'
+alias ggpush='git push origin $(git_current_branch)'
+alias gc='git commit -S -v'
+alias gc!='git commit -v --amend'
+alias gss='git status -s'
+alias gd='git diff'
+alias ga='git add'
