@@ -24,6 +24,7 @@ export LANG=en_US.UTF-8
 export TERM=xterm-256color
 export NVM_DIR="$HOME/.nvm"
 export ZDOTDIR="$HOME/.config/zsh"
+export _Z_DATA="$ZDOTDIR/.z"
 
 # Rust add to path
 export PATH="$HOME/.cargo/bin:$PATH"
