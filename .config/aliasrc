@@ -22,6 +22,7 @@ alias htop="bb"
 alias ssleep='sudo shutdown -h '
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
+alias octal="stat -c '%a %A %n'"
 
 ## cfg
 alias pkg='nvim -o ~/.config/packages/crates.csv ~/.config/packages/pkg.csv'

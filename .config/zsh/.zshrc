@@ -9,8 +9,9 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 # Load z
 [ -f "$HOME/.config/zsh/z.sh" ] && source "$HOME/.config/zsh/z.sh"
 
-# Skim shortcuts
-[ -f "$HOME/.config/zsh/key-bindings.zsh" ] && source "$HOME/.config/zsh/key-bindings.zsh"
+
+# fzf shortcuts
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
