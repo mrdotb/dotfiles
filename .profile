@@ -25,6 +25,7 @@ export TERM=xterm-256color
 export NVM_DIR="$HOME/.nvm"
 export ZDOTDIR="$HOME/.config/zsh"
 export _Z_DATA="$ZDOTDIR/.z"
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Rust add to path
 export PATH="$HOME/.cargo/bin:$PATH"
