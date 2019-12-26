@@ -64,6 +64,11 @@ echo -ne '\e[5 q'
 # Use beam shape cursor for each new prompt.
 preexec() { echo -ne '\e[5 q' ;}
 
+# Vpn
+function vpn() {
+  sudo openvpn "`echo $VPN`/`ls $VPN | grep "ovpn" | fzf`"
+}
+
 # Unlimited history
 # https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
 HISTFILE="$HOME/.config/zsh/.zsh_history"

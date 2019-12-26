@@ -37,8 +37,8 @@ alias polybarconf='nvim ~/.config/polybar/config'
 alias tmuxconf='nvim ~/.tmux.conf.local'
 
 ## git
-alias ggpull='git pull origin $(git_current_branch)'
-alias ggpush='git push origin $(git_current_branch)'
+alias ggpull='git pull origin master'
+alias ggpush='git push origin master'
 alias gc='git commit -S -v'
 alias gc!='git commit -v --amend'
 alias gss='git status -s'
