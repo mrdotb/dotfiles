@@ -9,7 +9,6 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 # Load z
 [ -f "$HOME/.config/zsh/z.sh" ] && source "$HOME/.config/zsh/z.sh"
 
-
 # fzf shortcuts
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -66,7 +65,7 @@ preexec() { echo -ne '\e[5 q' ;}
 
 # Vpn
 function vpn() {
-  sudo openvpn "`echo $VPN`/`ls $VPN | grep "ovpn" | fzf`"
+  cd $VPN && sudo openvpn "`echo $VPN`/`ls $VPN | grep "ovpn" | fzf`"
 }
 
 # Unlimited history

@@ -49,7 +49,7 @@ font-1 = FontAwesome:size=10
 
 modules-left = i3 xwindow
 modules-center = vpn network
-modules-right = pulseaudio filesystem memory cpu temperature date powermenu
+modules-right = battery pulseaudio filesystem memory cpu temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -249,7 +249,7 @@ sink = alsa_output.pci-0000_12_00.3.analog-stereo
 ; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
 ; Default: true
 use-ui-max = true
-format-volume = <label-volume> <bar-volume>
+format-volume = <bar-volume>
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix =
@@ -347,5 +347,26 @@ menu-0-1-exec = systemctl reboot
 menu-0-2 = power off
 menu-0-2-exec = systemctl poweroff
 
-; vim:ft=dosini
+[module/battery]
+type = internal/battery
 
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = AC
+
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
+
+; vim:ft=dosini
