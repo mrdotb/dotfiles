@@ -13,6 +13,10 @@ set shiftwidth=2
 set number
 set relativenumber
 
+set foldmethod=indent
+set nofoldenable
+set foldnestmax=10
+
 set hlsearch
 set incsearch
 set ignorecase

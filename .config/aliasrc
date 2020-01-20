@@ -18,7 +18,6 @@ alias diff="diff --color=auto"
 alias v="$EDITOR"
 alias t="tmux"
 alias i="sudo apt install"
-alias htop="bb"
 alias ssleep='sudo shutdown -h '
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
