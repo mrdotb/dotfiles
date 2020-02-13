@@ -97,7 +97,7 @@ border-top-color = ${colors.background}
 
 modules-left = filesystem memory cpu temperature
 modules-center = localip network ip
-modules-right = battery networkname
+modules-right = pkgupdate battery networkname
 
 tray-position = right
 
@@ -346,6 +346,16 @@ label-visible = %index%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
+
+[module/pkgupdate]
+type = custom/script
+exec = /usr/lib/update-notifier/apt-check 2>&1 | awk 'BEGIN{FS=";"}{printf("%i updates", $1)}'
+interval = 1800
+format-background = ${colors.active}
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+format-padding = 2
+format-margin = 3
 
 [module/networkname]
 type = custom/script
