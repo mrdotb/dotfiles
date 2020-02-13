@@ -518,14 +518,14 @@ warn-temperature = 60
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
+;
+format = <label>
 label = %temperature-c%
-label-padding = 0
-label-margin = 0
-format-background = ${colors.active}
+label-background = ${colors.active}
 format-underline = ${colors.background}
 format-overline = ${colors.background}
-format-padding = 2
-format-margin = 1
+label-padding = 3
+label-margin = 1
 
 [module/powermenu]
 type = custom/menu
