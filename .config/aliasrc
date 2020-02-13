@@ -34,6 +34,7 @@ alias vimrc='nvim ~/.config/nvim/init.vim'
 alias i3config='nvim ~/.config/i3/config'
 alias polybarconf='nvim ~/.config/polybar/config'
 alias tmuxconf='nvim ~/.tmux.conf.local'
+alias redshiftconf='nvim ~/.config/redshift.conf'
 
 ## git
 alias ggpull='git pull origin master'

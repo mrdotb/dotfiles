@@ -8,6 +8,9 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+export LANG=en_US.UTF-8
+export TERM=xterm-256color
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
@@ -20,10 +23,10 @@ export BROWSER=firefox
 export FILE=thunar
 export PAGER="less"
 
-# Config
+# iex history
 export ERL_AFLAGS="-kernel shell_history enabled"
-export FZF_DEFAULT_COMMAND='fd --type f'
-export LANG=en_US.UTF-8
+
+# less pager
 export LESS=-R
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
@@ -32,9 +35,14 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
-export NVM_DIR="$HOME/.nvm"
-export TERM=xterm-256color
+
+# FZF
+export FZF_DEFAULT_COMMAND='fd --type f'
+
+# Openvpn
 export VPN="$HOME/.config/vpn"
+
+# Zsh
 export ZDOTDIR="$HOME/.config/zsh"
 export _Z_DATA="$ZDOTDIR/.z"
 
@@ -46,3 +54,6 @@ export PATH="$HOME/Android/Sdk/platform-tools:$PATH"
 
 # Pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
+
+# Nvm
+export NVM_DIR="$HOME/.nvm"
