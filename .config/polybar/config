@@ -13,9 +13,10 @@ red = #dc143c
 green = #3cb371
 orange = #ffa500
 blue = #4169e1
+grey = #3e4245
 white = #fff
 background = #26282a
-active =  #3e4245
+active =  ${self.grey}
 bar-border = #0e0e0f
 background-alt = #444
 foreground = #dfdfdf
@@ -94,12 +95,11 @@ underline-color = ${colors.background}
 border-top-size = 6
 border-top-color = ${colors.background}
 
-modules-left = filesystem memory cpu
-modules-center = network temperature
-modules-right = battery
+modules-left = filesystem memory cpu temperature
+modules-center = localip network ip
+modules-right = battery networkname
 
 tray-position = right
-tray-padding = 2
 
 [module/xwindow]
 type = internal/xwindow
@@ -226,8 +226,12 @@ accumulate-stats = true
 ; Default: false
 unknown-as-up = true
 ; Default: %ifname% %local_ip%
-label-connected = %downspeed:9% %upspeed:9%
-
+label-connected = %downspeed:9%    祝%upspeed:9%
+label-connected-background = ${colors.active}
+label-connected-underline = ${colors.background}
+label-connected-overline = ${colors.background}
+label-connected-padding = 2
+label-connected-margin = 3
 
 [module/filesystem]
 type = internal/fs
@@ -343,14 +347,35 @@ label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
+[module/networkname]
+type = custom/script
+exec = nmcli -t -g device,name connection show --active | awk 'BEGIN{FS=":";}{if($1 == "wlp2s0"){printf $2} }'
+interval = 60
+format-background = ${colors.active}
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+format-padding = 2
+format-margin = 3
 
-[module/vpn]
+[module/localip]
+type = custom/script
+exec = ip route get 8.8.8.8 | awk '{printf $7}'
+interval = 1800
+format-background = ${colors.active}
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+format-padding = 2
+format-margin = 3
+
+[module/ip]
 type = custom/script
 exec = curl -s ipinfo.io/ip
-exec-if = pgrep -x openvpn
-interval = 30
-format-underline = #268bd2
-format-prefix-foreground = #5b
+interval = 1800
+format-background = ${colors.active}
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+format-padding = 2
+format-margin = 3
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -454,22 +479,43 @@ interval = 5
 
 [module/temperature]
 type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
 thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/virtual/hwmon/hwmon4/temp1_input
+
+; Base temperature for where to start the ramp (in degrees celsius)
+; Default: 0
+base-temperature = 20
+
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
 warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
+; Available tokens:
+;   %temperature% (deprecated)
+;   %temperature-c%   (default, temperature in °C)
+;   %temperature-f%   (temperature in °F)
 label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.red}
-
-ramp-0 =
-ramp-1 =
-ramp-2 =
-ramp-foreground = ${colors.foreground-alt}
+label-padding = 0
+label-margin = 0
+format-background = ${colors.active}
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+format-padding = 2
+format-margin = 1
 
 [module/powermenu]
 type = custom/menu
@@ -517,5 +563,104 @@ adapter = AC
 ;
 ; Default: 5
 poll-interval = 5
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+time-format = %H:%M
+
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
+format-charging = <animation-charging> <label-charging>
+
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-discharging>
+format-discharging = <animation-discharging> <label-discharging>
+
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;format-full = <ramp-capacity> <label-full>
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+label-charging = Charging %percentage%%
+format-charging-background = ${colors.active}
+format-charging-underline = ${colors.background}
+format-charging-overline = ${colors.background}
+format-charging-padding = 2
+
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging = Discharging %percentage%%
+format-discharging-background = ${colors.active}
+format-discharging-underline = ${colors.background}
+format-discharging-overline = ${colors.background}
+format-discharging-padding = 2
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+label-full = Fully charged
+label-full-background = ${colors.active}
+label-full-underline = ${colors.background}
+label-full-overline = ${colors.background}
+label-full-padding = 2
+label-full-margin = 3
+
+
+; Only applies if <ramp-capacity> is used
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
+;ramp-capacity-3 = 
+;ramp-capacity-4 = 
+;ramp-capacity-5 = 
+
+; Only applies if <bar-capacity> is used
+; bar-capacity-width = 10
+
+; Only applies if <animation-charging> is used
+animation-charging-9 = 
+animation-charging-8 = 
+animation-charging-7 = 
+animation-charging-6 = 
+animation-charging-5 = 
+animation-charging-4 = 
+animation-charging-3 = 
+animation-charging-2 = 
+animation-charging-1 = 
+animation-charging-0 = 
+
+; Framerate in milliseconds
+animation-charging-framerate = 300
+
+; Only applies if <animation-discharging> is used
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+animation-discharging-5 = 
+animation-discharging-6 = 
+animation-discharging-7 = 
+animation-discharging-8 = 
+animation-discharging-9 = 
+
+; Framerate in milliseconds
+animation-discharging-framerate = 300
 
 ; vim:ft=dosini
