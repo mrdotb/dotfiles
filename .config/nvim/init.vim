@@ -40,7 +40,7 @@ inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("k"))
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'sheerun/vim-polyglot'
-Plug 'justinmk/molokai'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'neomake/neomake'
   augroup localneomake
     autocmd! BufWritePost * Neomake
@@ -51,16 +51,19 @@ Plug 'junegunn/fzf.vim'
 let g:fzf_layout = { 'down': '~50%' }
   map <C-[> :Files<C-[>
 
+Plug 'edkolev/promptline.vim'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
+let g:airline_powerline_fonts = 1
+
 Plug 'mattn/emmet-vim'
 
 Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
-colorscheme molokai
-set background=dark
+colorscheme dracula
+"set background=dark
 syntax enable
 
 "disable arrows

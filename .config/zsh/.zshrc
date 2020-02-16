@@ -1,13 +1,15 @@
 # mrdotb's config for the Z Shell
 
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}λ%b "
+# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}λ%b "
+# Load promptline
+[ -f "$ZDOTDIR/.promptline.sh" ] && source "$ZDOTDIR/.promptline.sh"
 
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 # Load z
-[ -f "$HOME/.config/zsh/z.sh" ] && source "$HOME/.config/zsh/z.sh"
+[ -f "$ZDOTDIR/z.sh" ] && source "$ZDOTDIR/z.sh"
 
 # fzf shortcuts
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

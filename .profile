@@ -19,7 +19,7 @@ fi
 # Default programs:
 export VISUAL=nvim
 export EDITOR=nvim
-export BROWSER=firefox
+export BROWSER=/usr/bin/brave-browser
 export FILE=thunar
 export PAGER="less"
 
