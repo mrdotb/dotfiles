@@ -22,6 +22,10 @@ autoload -U colors && colors
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+function git_branch {
+  git rev-parse --abbrev-ref HEAD
+}
+
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist

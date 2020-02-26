@@ -60,6 +60,7 @@ let g:airline_powerline_fonts = 1
 Plug 'mattn/emmet-vim'
 
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'vim-scripts/DrawIt'
 
 call plug#end()
 colorscheme dracula
