@@ -20,9 +20,9 @@ let mapleader = "\\"
 " Sane Vim settings {{{
 syntax enable
 set title
-" Use sys clipboard
+" Set default register 'unnamed' @" to system clipboard
 if has('unnamedplus')
-	set clipboard=unnamed,unnamedplus
+  set clipboard=unnamed,unnamedplus
 endif
 " disable mouse
 set mouse=""
