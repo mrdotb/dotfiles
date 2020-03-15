@@ -17,13 +17,29 @@ let mapleader = "\\"
 " set nofoldenable
 " set foldnestmax=10
 
-" Sane Vim settings {{{
-syntax enable
-set title
-" Set default register 'unnamed' @" to system clipboard
+
+" Markdown shortcut {{{
+augroup ft_markdown
+  autocmd!
+  "fast code block
+  autocmd Filetype markdown nnoremap <leader>` i```<CR>```<Esc>k$a
+augroup END
+" }}}
+
+" Vim Register settings {{{
+" Set default register to system clipboard
 if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
+
+noremap x "_x
+vnoremap p "_dP
+noremap <leader>p "0p
+" }}}
+
+" Sane Vim settings {{{
+syntax enable
+set title
 " disable mouse
 set mouse=""
 " Resize split when window is resized
@@ -43,10 +59,13 @@ set incsearch
 set ignorecase
 set smartcase
 " Disable search result when Carriage Return
-map <CR> :nohl<CR>
+nnoremap <CR> :nohlsearch<CR>
 "}}}
 
 " noremap {{{
+" use magic regex by default
+nnoremap / /\v
+nnoremap ? ?\v
 " edit vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
@@ -92,9 +111,20 @@ Plug 'mattn/emmet-vim'
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-scripts/DrawIt'
-
+Plug 'mrdotb/vim-markdown-folding'
+set nocompatible
+if has("autocmd")
+  filetype plugin indent on
+endif
 call plug#end()
-" }}}
 
-" Set colorscheme after loading the scheme
+" vim-markdown fold
+let g:vim_markdown_folding_disabled = 1
+set nocompatible
+if has("autocmd")
+  filetype plugin indent on
+endif
+" Set colorscheme after loading the theme
 colorscheme dracula
+
+" }}}
