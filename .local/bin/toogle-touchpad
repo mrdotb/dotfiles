@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#set -x
+# vim: noai:ts=4:sw=4:expandtab
+touchpad_id=($(xinput list --id-only "DLL07BE:01 06CB:7A13 Touchpad"))
+# printf "%s\n" "touchpad_id: '$touchpad_id'" >&2
+
+xinput list-props "DLL07BE:01 06CB:7A13 Touchpad" \
+  | grep -P "Device Enabled \([0-9]{3}\):\t1"\
+
+if [ $? -eq 0 ]; then
+    xinput disable $touchpad_id
+else
+    xinput enable $touchpad_id
+fi
+
