@@ -11,6 +11,10 @@ fi
 workspace_dir=/home/mrdotb/.tmux/heytmux-workspaces
 
 workspace=$(ls $workspace_dir | fzf)
+# If we press esc in fzf exit
+if [ -z $workspace ]; then
+    exit 0
+fi
 workspace_name=$(echo $workspace | gawk '{gsub(".yml","", $0);print $0}')
 
 tmux list-sessions | grep $workspace_name
