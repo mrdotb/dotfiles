@@ -16,6 +16,7 @@ if [ ! -f $logfile ]; then
   ## Launch 1st time
   MONITOR=$monitor polybar top >> $logfile 2>&1 &
   MONITOR=$monitor polybar bottom >> $logfile 2>&1 &
+  sleep 1
 fi
 
 # Terminate already running bar instances
