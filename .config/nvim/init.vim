@@ -58,7 +58,7 @@ set smartindent
 set laststatus=2
 set showcmd
 set visualbell
-set shortmess=aIT
+" set shortmess=aIT
 set tabstop=2
 set shiftwidth=2
 set expandtab smarttab
@@ -235,8 +235,7 @@ nnoremap <CR> :nohlsearch<CR>
 nnoremap / /\v
 nnoremap ? ?\v
 " edit vimrc
-nnoremap <leader>ev :below:split $MYVIMRC<cr>
-
+nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 " source vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
@@ -254,4 +253,3 @@ inoremap <down>  <nop>
 inoremap <left>  <nop>
 inoremap <right> <nop>
 " }}}
-
