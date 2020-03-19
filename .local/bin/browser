@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# set -eux
+# Simple cmd line to launch browser and focus windows
+function usage {
+    cat << __EOT__
+Usage: browser [SITE] [QUERY]
+
+Open brave-browser and focus the window.
+SITE={"duck" | "fren" | "enfr"}
+QUERY="Some string"
+__EOT__
+}
+
+# get the class using `xprop | grep CLASS`
+class="Brave-browser"
+site=$1
+query=$2
+
+if [ -z $query ]; then usage && exit; fi
+
+if [ $site == "duck" ]; then
+  url="https://duckduckgo.com/?q=${query/ /+}&t=brave&ia=web"
+elif [ $site == "fren" ]; then
+  url="https://www.wordreference.com/fren/${query/ /%20}"
+elif [ $site == "enfr" ]; then
+  url="https://www.wordreference.com/enfr/${query/ /%20}"
+fi
+
+# Open url
+$BROWSER $url
+# Focus $BROWSER
+i3-msg "[class=\"${class}\"] focus"
