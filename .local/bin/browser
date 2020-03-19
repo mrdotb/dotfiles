@@ -27,6 +27,6 @@ elif [ $site == "enfr" ]; then
 fi
 
 # Open url
-$BROWSER $url
+$BROWSER $url > /dev/null 2>&1
 # Focus $BROWSER
-i3-msg "[class=\"${class}\"] focus"
+i3-msg "[class=\"${class}\"] focus" > /dev/null
