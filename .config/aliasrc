@@ -20,12 +20,14 @@ alias t="tmux"
 alias i="sudo apt install"
 alias ii="sudo apt remove"
 alias u="sudo apt update"
-alias uu="sudo apt upgrade"
+alias uu="sudo apt upgrade -y"
 alias ssleep='sudo shutdown -h '
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 alias octal="stat -c '%a %A %n'"
 alias untargz="tar -xvzf"
+alias szsh="source ~/.config/zsh/.zshrc"
+alias duck="browser duck"
 
 ## cfg
 alias pkg='nvim -o ~/.config/packages/crates.csv ~/.config/packages/pkg.csv'
@@ -47,3 +49,9 @@ alias gc!='git commit -v --amend'
 alias gss='git status -s'
 alias gd='git diff'
 alias ga='git add'
+
+## yadm
+alias yss='yadm status -s'
+alias ya='yadm add'
+alias yc='yadm commit -S -v'
+alias yypush='yadm push origin master'
