@@ -25,6 +25,7 @@ Plug 'neomake/neomake'
     autocmd! BufWritePost * Neomake
   augroup END
 Plug 'mattn/emmet-vim'
+Plug 'godlygeek/tabular'
 
 " Colors & apparences
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -153,19 +154,26 @@ nnoremap [t :tabp<cr>
 " -----------------------------------------------------------------------------
 "  FZF
 "  ----------------------------------------------------------------------------
-noremap <silent> <leader><leader> :Files<cr>
-nnoremap <silent> <leader>l  :Lines<cr>
-noremap <silent> <leader><enter> :Buffers<cr>
-nnoremap <silent> <leader>C :Colors<cr>
-nnoremap <silent> <leader>rg :Rg<cr>
-nnoremap <silent> <leader>' :Marks<cr>
+noremap  <silent> <leader><leader> :Files<cr>
+nnoremap <silent> <leader>l        :Lines<cr>
+noremap  <silent> <leader><enter>  :Buffers<cr>
+nnoremap <silent> <leader>C        :Colors<cr>
+nnoremap <silent> <leader>rg       :Rg<cr>
+nnoremap <silent> <leader>'        :Marks<cr>
+
+" -----------------------------------------------------------------------------
+"  Tabular
+"  ----------------------------------------------------------------------------
+noremap <leader>t :Tabular /
 
 " -----------------------------------------------------------------------------
 "  REGISTER
 "  ----------------------------------------------------------------------------
+
 noremap x "_x
 vnoremap p "_dP
 noremap <leader>p "0p
+
 " -----------------------------------------------------------------------------
 "  BROWSER
 "  ----------------------------------------------------------------------------
