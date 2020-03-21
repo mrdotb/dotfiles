@@ -14,11 +14,12 @@ let maplocalleader = '\'
 call plug#begin('~/.config/nvim/plugged')
 
 " My plugin
-Plug '~/.config/nvim/plugged/potion'
+" Plug '~/.config/nvim/plugged/potion'
+" Plug '~/Projects/vim-markdown-folding'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
-Plug 'mrdotb/vim-markdown-folding'
+Plug 'masukomi/vim-markdown-folding'
 Plug 'neomake/neomake'
   augroup localneomake
     autocmd! BufWritePost * Neomake
@@ -28,6 +29,7 @@ Plug 'mattn/emmet-vim'
 " Colors & apparences
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline'
+Plug 'chrisbra/Colorizer'
 
 " junegunn
 Plug 'junegunn/limelight.vim'
@@ -48,12 +50,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-scripts/DrawIt'
 
 call plug#end()
-
-" vim-markdown fold
-let g:vim_markdown_folding_disabled = 1
-if has("autocmd")
-  filetype plugin indent on
-endif
 
 " }}}
 " =============================================================================
@@ -129,6 +125,10 @@ inoremap <right> <nop>
 
 " Disable search result when Carriage Return
 nnoremap <silent><cr> :nohlsearch<cr>
+
+" Use o to insert line
+nnoremap o o<esc>
+nnoremap O O<esc>
 
 " -----------------------------------------------------------------------------
 "  Quickfix
@@ -221,11 +221,16 @@ command! -nargs=* En call <SID>Browser( 'enfr', '<args>' )
 " -----------------------------------------------------------------------------
 "  markdown
 "  ----------------------------------------------------------------------------
+
+let g:vim_markdown_folding_disabled = 1
 augroup ft_markdown
   autocmd!
   "fast block code
   autocmd Filetype markdown nnoremap <leader>` i```<CR>```<Esc>kA
   autocmd Filetype markdown inoremap <leader>` ```<CR>```<Esc>kA
+  "autocmd Filetype markdown plugin indent on
+  " autocmd Filetype markdown set foldmethod=expr
+  " autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
 augroup END
 
 " -----------------------------------------------------------------------------
@@ -279,9 +284,14 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " -----------------------------------------------------------------------------
 "  Polyglot
 "  ----------------------------------------------------------------------------
+" Disable the polyglot markdown folding
 let g:vim_markdown_folding_disabled = 1
-if has("autocmd")
-  filetype plugin indent on
-endif
+
+" -----------------------------------------------------------------------------
+"  Colorizer
+"  ----------------------------------------------------------------------------
+let g:colorizer_skip_comments = 1
+let g:colorizer_auto_filetype='css,html,javascript'
+
 " }}}
 " =============================================================================
