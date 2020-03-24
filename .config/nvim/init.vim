@@ -177,6 +177,14 @@ vnoremap p "_dP
 noremap <leader>p "0p
 
 " -----------------------------------------------------------------------------
+"  vim-emoji
+"  ----------------------------------------------------------------------------
+nnoremap <leader>e
+  \ :set completefunc=emoji#complete<cr>i<C-x><C-u><bs><bs><bs>
+inoremap <leader>e
+  \ <esc>:set completefunc=emoji#complete<cr>i<C-x><C-u><bs><bs><bs>
+
+" -----------------------------------------------------------------------------
 "  BROWSER
 "  ----------------------------------------------------------------------------
 " this use my custom script 
@@ -236,8 +244,8 @@ let g:vim_markdown_folding_disabled = 1
 augroup ft_markdown
   autocmd!
   "fast block code
-  autocmd Filetype markdown nnoremap <leader>` i```<CR>```<Esc>kA
-  autocmd Filetype markdown inoremap <leader>` ```<CR>```<Esc>kA
+  " autocmd Filetype markdown nnoremap <leader>` i```<CR>```<Esc>kA
+  " autocmd Filetype markdown inoremap <leader>` ```<CR>```<Esc>kA
   "autocmd Filetype markdown plugin indent on
   " autocmd Filetype markdown set foldmethod=expr
   " autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
