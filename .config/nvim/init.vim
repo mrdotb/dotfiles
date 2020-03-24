@@ -13,7 +13,7 @@ let maplocalleader = '\'
 " Vim plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
-" My plugin
+" Plugin Dev
 " Plug '~/.config/nvim/plugged/potion'
 " Plug '~/Projects/vim-markdown-folding'
 
@@ -26,11 +26,13 @@ Plug 'neomake/neomake'
   augroup END
 Plug 'mattn/emmet-vim'
 Plug 'godlygeek/tabular'
+Plug 'SirVer/ultisnips'
 
 " Colors & apparences
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/Colorizer'
+Plug 'machakann/vim-highlightedyank'
 
 " junegunn
 Plug 'junegunn/limelight.vim'
@@ -87,6 +89,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set inccommand=split
 
 syntax enable
 " Resize split when window is resized
@@ -127,10 +130,9 @@ inoremap <right> <nop>
 " Disable search result when Carriage Return
 nnoremap <silent><cr> :nohlsearch<cr>
 
-" Use o to insert line
+" Use o for newline
 nnoremap o o<esc>
 nnoremap O O<esc>
-
 " -----------------------------------------------------------------------------
 "  Quickfix
 "  ----------------------------------------------------------------------------
@@ -289,6 +291,8 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
+nnoremap <leader>g :Goyo<cr>
+
 " -----------------------------------------------------------------------------
 "  Polyglot
 "  ----------------------------------------------------------------------------
@@ -300,6 +304,20 @@ let g:vim_markdown_folding_disabled = 1
 "  ----------------------------------------------------------------------------
 let g:colorizer_skip_comments = 1
 let g:colorizer_auto_filetype='css,html,javascript'
+
+" -----------------------------------------------------------------------------
+"  UltiSnips
+"  ----------------------------------------------------------------------------
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+nnoremap <leader>u :UltiSnipsEdit<cr>
+
+" -----------------------------------------------------------------------------
+"  highlightedyank
+"  ----------------------------------------------------------------------------
+let g:highlightedyank_highlight_duration = 400
 
 " }}}
 " =============================================================================
