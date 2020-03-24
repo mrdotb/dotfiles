@@ -22,6 +22,9 @@ autoload -U colors && colors
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# rbenv
+eval "$(rbenv init -)"
+
 function git_branch {
   git rev-parse --abbrev-ref HEAD
 }
