@@ -16,6 +16,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plugin Dev
 " Plug '~/.config/nvim/plugged/potion'
 " Plug '~/Projects/vim-markdown-folding'
+" Plug '/home/mrdotb/Projects/vim/vim-42header'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
@@ -51,6 +52,7 @@ Plug 'tpope/vim-vinegar'
 " Misc
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-scripts/DrawIt'
+Plug 'mrdotb/vim-42header'
 
 call plug#end()
 
@@ -260,6 +262,16 @@ augroup ft_vimscript
   autocmd Filetype vim set foldmethod=marker
 augroup END
 
+" -----------------------------------------------------------------------------
+"  c 42 style
+"  ----------------------------------------------------------------------------
+augroup ft_c
+  autocmd!
+  autocmd Filetype c setlocal noexpandtab tabstop=2 shiftwidth=2
+  autocmd BufEnter *.c Stdheader
+  autocmd BufWritePre *.c Stdheader
+augroup END
+
 " }}}
 " =============================================================================
 " Plugins settings {{{
@@ -326,6 +338,12 @@ nnoremap <leader>u :UltiSnipsEdit<cr>
 "  highlightedyank
 "  ----------------------------------------------------------------------------
 let g:highlightedyank_highlight_duration = 400
+
+" -----------------------------------------------------------------------------
+"  vim-42header
+"  ----------------------------------------------------------------------------
+let g:hdr42mail = "bchaleil@42.fr"
+let g:hdr42user = "bchaleil"
 
 " }}}
 " =============================================================================
