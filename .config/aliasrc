@@ -21,6 +21,7 @@ alias i="sudo apt install"
 alias ii="sudo apt remove"
 alias u="sudo apt update"
 alias uu="sudo apt upgrade -y"
+alias uuu="u && uu"
 alias ssleep='sudo shutdown -h '
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'

@@ -48,6 +48,7 @@ Plug 'edkolev/promptline.vim'
 " tpope
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
 
 " Misc
 Plug 'christoomey/vim-tmux-navigator'
@@ -267,9 +268,19 @@ augroup END
 "  ----------------------------------------------------------------------------
 augroup ft_c
   autocmd!
-  autocmd Filetype c setlocal noexpandtab tabstop=2 shiftwidth=2
-  autocmd BufEnter *.c Stdheader
-  autocmd BufWritePre *.c Stdheader
+  autocmd Filetype c setlocal noexpandtab tabstop=4 shiftwidth=4
+  autocmd Filetype c nnoremap ; $a;<esc>
+  autocmd Filetype c setlocal foldmethod=syntax
+  autocmd BufNewFile *.c Stdheader
+augroup END
+
+" -----------------------------------------------------------------------------
+"  h 42 style
+"  ----------------------------------------------------------------------------
+augroup ft_h
+  autocmd!
+  autocmd Filetype cpp setlocal noexpandtab tabstop=4 shiftwidth=4
+  autocmd BufNewFile *.c Stdheader
 augroup END
 
 " }}}
