@@ -8,7 +8,9 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-export LANG=en_US.UTF-8
+#export LANG="en_US.UTF-8"
+#export LANGUAGE="en_US.utf8"
+#export LC_ALL="en_US.utf8"
 export TERM=xterm-256color
 
 # set PATH so it includes user's private bin if it exists
