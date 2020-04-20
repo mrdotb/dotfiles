@@ -133,9 +133,13 @@ inoremap <right> <nop>
 " Disable search result when Carriage Return
 nnoremap <silent><cr> :nohlsearch<cr>
 
+" Folding recursive open fold even if we already are inside fold
+nnoremap <leader>O zczA
+
 " Use o for newline
 nnoremap o o<esc>
 nnoremap O O<esc>
+
 " -----------------------------------------------------------------------------
 "  Quickfix
 "  ----------------------------------------------------------------------------
@@ -174,8 +178,7 @@ noremap <leader>t :Tabular /
 " -----------------------------------------------------------------------------
 "  REGISTER
 "  ----------------------------------------------------------------------------
-
-noremap x "_x
+noremap x "xx
 vnoremap p "_dP
 noremap <leader>p "0p
 
@@ -183,9 +186,14 @@ noremap <leader>p "0p
 "  vim-emoji
 "  ----------------------------------------------------------------------------
 nnoremap <leader>e
-  \ :set completefunc=emoji#complete<cr>i<C-x><C-u><bs><bs><bs>
+  \ :set completefunc=emoji#complete<cr>a<C-x><C-u><bs><bs><bs>
 inoremap <leader>e
-  \ <esc>:set completefunc=emoji#complete<cr>i<C-x><C-u><bs><bs><bs>
+  \ <esc>:set completefunc=emoji#complete<cr>a<C-x><C-u><bs><bs><bs>
+
+" -----------------------------------------------------------------------------
+"  repeat last cmd
+"  ----------------------------------------------------------------------------
+nnoremap <leader><space> :!!<cr>
 
 " -----------------------------------------------------------------------------
 "  BROWSER
@@ -271,6 +279,7 @@ augroup ft_c
   autocmd Filetype c setlocal noexpandtab tabstop=4 shiftwidth=4
   autocmd Filetype c nnoremap ; $a;<esc>
   autocmd Filetype c setlocal foldmethod=syntax
+  autocmd Filetype c set comments=sr:/*,m:**,ex:*/ 
   autocmd BufNewFile *.c Stdheader
 augroup END
 
