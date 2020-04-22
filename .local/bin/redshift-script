@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -eux
+
+# Terminate already running bar instances
+pkill -9 redshift
+
+# Wait until the processes have been shut down
+while pgrep -u $UID -x redshift >/dev/null; do sleep 0.1; done
+
+redshift &

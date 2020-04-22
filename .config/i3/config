@@ -1,0 +1,177 @@
+# vim: filetype=i3
+# config file (v4)
+
+set $mod Mod4
+set $screen1 eDP-1-1
+#set $screen2 eDP-1-1
+set $screen2 HDMI-1-1
+set $home /home/mrdotb
+set $term alacritty
+set $browser brave-browser
+set $filemanager thunar
+
+# Gaps
+#for_window [class=".*"] border pixel 0
+#gaps outer 0
+#gaps inner 10
+#smart_borders on
+
+# Font
+font DejaVu Sans Mono 12
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec $term
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+x split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container #bindsym $mod+d focus child
+workspace 1 output $screen1
+workspace 2 output $screen2
+workspace 3 output $screen2
+workspace 4 output $screen2
+workspace 5 output $screen2
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Colors alias
+set $CL_BG #282C34
+set $CL_FG #ABB2BF
+set $CL_CUR #528BFF
+set $CL_BLACK #000000
+set $CL_RED #E06C75
+set $CL_GREEN #98C379
+set $CL_ORANGE #D19A66
+set $CL_BLUE #61AEEE
+set $CL_MAGENTA #C678DD
+set $CL_CYAN #56B6C2
+set $CL_LIGHTGRAY #ABB2BF
+set $CL_DARKGRAY #5C6370
+set $CL_WHITE #FFFFFF
+
+
+default_border pixel 1
+
+# Decotations colors
+
+# class                 border      backgr.     text    indicator   child_border
+client.focused          $CL_CUR     $CL_CUR     $CL_BG   $CL_CUR     $CL_CUR
+#client.focused_inactive $CL_MAGENTA $CL_MAGENTA $CL_BG   $CL_MAGENTA $CL_MAGENTA
+#client.unfocused        $CL_BG      $CL_BG      $CL_CUR  $CL_BG      $CL_BG
+#client.urgent           $CL_RED     $CL_RED     $CL_BG   $CL_RED     $CL_RED
+#client.placeholder      $CL_BG      $CL_BG      $CL_WHITE $CL_BLACK  $CL_BG
+
+# Make screenshot
+bindsym --release Print exec scrot ~/Pictures/Screenshot_%d-%m-%y-%T.png
+# Make screenshot current window (Alt+Print)
+bindsym --release Mod1+Sys_Req exec scrot -u ~/Pictures/Screenshot_%d-%m-%y-%T.png
+# Make screenshot for selected window
+bindsym --release Shift+Print exec scrot -s ~/Pictures/Screenshot_%d-%m-%y-%T.png
+
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+# Dmenu
+bindsym $mod+d exec --no-startup-id "rofi -modi run,drun -show drun -line-padding 4 -columns 1 -width 40 -padding 30 -hide-scrollbar -show-icons -drun-icon-theme 'Papirus'"
+
+# Disable touchpad
+bindsym $mod+Shift+t exec "toogle-touchpad"
+
+# Start browser
+bindsym $mod+g exec $browser
+
+# Start mate-calculator
+bindsym $mod+c exec mate-calc
+
+# File manager
+bindsym $mod+r exec $filemanager
+
+# startup programs
+exec --no-startup-id compton -f
+## wifi on polybar systray
+exec --no-startup-id nm-applet
+exec --no-startup-id pulseaudio
+exec --no-startup-id dunst
+exec --no-startup-id unclutter
+exec --no-startup-id setxkbmap -option caps:escape
+
+# redshift
+exec_always --no-startup-id redshift-script
+
+# polybar bar
+exec_always --no-startup-id $home/.config/polybar/run.sh
+
+# Wallpaper
+exec_always --no-startup-id "feh --bg-scale ~/.config/wallpaper.jpg"
+
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
+#bindsym XF86AudioMute exec pamixer -t
