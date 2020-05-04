@@ -49,6 +49,7 @@ Plug 'edkolev/promptline.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fireplace'
 
 " Misc
 Plug 'christoomey/vim-tmux-navigator'
@@ -115,6 +116,9 @@ nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 
 " source vimrc
 nnoremap <silent> <leader>sv :write<cr>:source $MYVIMRC<cr>:nohlsearch<cr>
+
+" open til
+nnoremap <silent><leader>et :tabnew ~/Projects/til<cr>:lcd %<cr>
 
 " completion, change default binding
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("j"))
@@ -185,9 +189,9 @@ noremap <leader>p "0p
 " -----------------------------------------------------------------------------
 "  vim-emoji
 "  ----------------------------------------------------------------------------
-nnoremap <leader>e
+nnoremap <leader>ee
   \ :set completefunc=emoji#complete<cr>a<C-x><C-u><bs><bs><bs>
-inoremap <leader>e
+inoremap <leader>ee
   \ <esc>:set completefunc=emoji#complete<cr>a<C-x><C-u><bs><bs><bs>
 
 " -----------------------------------------------------------------------------

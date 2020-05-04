@@ -1,0 +1,33 @@
+snippet canvas
+window.onload = function() {
+  let canvas = document.getElementById('canvas')
+  let ctx = canvas.getContext('2d')
+  let width = canvas.width = window.innerWidth
+  let height = canvas.height = window.innerHeight
+
+
+  function render() {
+    ctx.clearRect(0, 0, width, height)
+
+    requestAnimationFrame(render)
+  }
+
+  render()
+}
+endsnippet
+
+snippet fn
+function $1($2) {
+  $3
+}
+endsnippet
+
+snippet log
+console.log($1)
+endsnippet
+
+snippet for
+for ($1; $2; $3) {
+  $4
+}
+endsnippet
