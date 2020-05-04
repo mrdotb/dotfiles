@@ -16,7 +16,7 @@ class="Brave-browser"
 site=$1
 query=$2
 
-if [ -z $query ]; then usage && exit; fi
+if [ -z $site ]; then usage && exit; fi
 
 if [ $site == "duck" ]; then
   url="https://duckduckgo.com/?q=${query// /+}&t=brave&ia=web"
@@ -24,6 +24,8 @@ elif [ $site == "fren" ]; then
   url="https://www.wordreference.com/fren/${query// /%20}"
 elif [ $site == "enfr" ]; then
   url="https://www.wordreference.com/enfr/${query// /%20}"
+else
+  url="$1"
 fi
 
 # Open url
