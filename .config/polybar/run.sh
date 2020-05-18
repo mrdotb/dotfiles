@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 config="/home/mrdotb/.config/polybar/config"
-monitor="eDP-1"
+monitor=$(xrandr | awk '/ connected/{print $1}')
 logfile="/tmp/polybar1.log"
 
 # if $logfile is not here then it's boot time
