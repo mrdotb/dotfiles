@@ -1,11 +1,21 @@
-snippet mod
+snippet defm
 defmodule $1 do
 	$2
 end
 endsnippet
 
-snippet fn
+snippet def
 def $1($2) do
 	$3
 end
+endsnippet
+
+snippet defp
+defp $1($2) do
+	$3
+end
+endsnippet
+
+snippet ins
+|> IO.inspect()
 endsnippet
