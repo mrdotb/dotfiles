@@ -34,6 +34,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/Colorizer'
 Plug 'machakann/vim-highlightedyank'
+Plug 'ap/vim-buftabline'
 
 " junegunn
 Plug 'junegunn/limelight.vim'
@@ -296,6 +297,16 @@ augroup ft_h
   autocmd BufNewFile *.c Stdheader
 augroup END
 
+
+" -----------------------------------------------------------------------------
+"  scss
+"  ----------------------------------------------------------------------------
+augroup ft_scss
+  autocmd!
+  autocmd Filetype scss nnoremap ; $a;<esc>
+augroup END
+
+
 " }}}
 " =============================================================================
 " Plugins settings {{{
@@ -347,7 +358,7 @@ let g:vim_markdown_folding_disabled = 1
 "  Colorizer
 "  ----------------------------------------------------------------------------
 let g:colorizer_skip_comments = 1
-let g:colorizer_auto_filetype='css,html,javascript'
+let g:colorizer_auto_filetype='scss,css,html,javascript'
 
 " -----------------------------------------------------------------------------
 "  UltiSnips
