@@ -41,6 +41,7 @@ alias i3config='nvim ~/.config/i3/config'
 alias polybarconf='nvim ~/.config/polybar/config'
 alias tmuxconf='nvim ~/.tmux.conf.local'
 alias redshiftconf='nvim ~/.config/redshift.conf'
+alias aptlist='dpkg --get-selections | fzf'
 
 ## git
 alias ggpull='git pull origin `git_branch`'
