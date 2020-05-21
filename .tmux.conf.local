@@ -301,4 +301,5 @@ set -g mode-keys vi
 #set -g status-position top
 
 # iexsearch
-bind C-r run "cat ~/Projects/elixir/history/history.sh | sh -s iex_search #{paneid} #{session_name} #D #{pane_current_command}"
+#session_id window_id pane_id pane_current_command
+bind C-r run "bash ~/.iex-history/iex-history.sh #{session_name} #{window_id} #D #{pane_current_command}"
