@@ -16,6 +16,14 @@ snippet for
 <% end %>
 endsnippet
 
+snippet if
+<%= if ${1:true} do %>
+	$0
+<% else %>
+	$1
+<% end %>
+endsnippet
+
 snippet ft "form_tag" w
 <%= form_tag(${1:"${2:/users}"}, method: ${3::post}) %>
 	$0
