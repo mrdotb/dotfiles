@@ -34,7 +34,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/Colorizer'
 Plug 'machakann/vim-highlightedyank'
-Plug 'ap/vim-buftabline'
+" Plug 'ap/vim-buftabline'
 
 " junegunn
 Plug 'junegunn/limelight.vim'
@@ -303,7 +303,7 @@ augroup END
 "  ----------------------------------------------------------------------------
 augroup ft_scss
   autocmd!
-  autocmd Filetype scss nnoremap ; $a;<esc>
+  " autocmd Filetype scss nnoremap ; $a;<esc>
 augroup END
 
 
