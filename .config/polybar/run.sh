@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 config="/home/mrdotb/.config/polybar/config"
-monitor=$(xrandr | awk '/ connected/{print $1}')
 logfile="/tmp/polybar1.log"
 
 # if $logfile is not here then it's boot time
@@ -14,8 +13,11 @@ if [ ! -f $logfile ]; then
   sed -i -e "s@hwmon-path.*@hwmon-path = $zone@g" $config
 
   ## Launch 1st time
-  MONITOR=$monitor polybar top >> $logfile 2>&1 &
-  MONITOR=$monitor polybar bottom >> $logfile 2>&1 &
+
+  for m in $(polybar --list-monitors | cut -d":" -f1); do
+    MONITOR=$m polybar top >> $logfile 2>&1 &
+    MONITOR=$m polybar bottom >> $logfile 2>&1 &
+  done
   sleep 1
 fi
 
@@ -26,5 +28,7 @@ pkill -9 polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 0.1; done
 
 # launch again
-MONITOR=$monitor polybar top >> $logfile 2>&1 &
-MONITOR=$monitor polybar bottom >> $logfile 2>&1 &
+for m in $(polybar --list-monitors | cut -d":" -f1); do
+  MONITOR=$m polybar top >> $logfile 2>&1 &
+  MONITOR=$m polybar bottom >> $logfile 2>&1 &
+done
