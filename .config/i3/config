@@ -2,9 +2,8 @@
 # config file (v4)
 
 set $mod Mod4
-set $screen1 eDP-1-1
-#set $screen2 eDP-1-1
-set $screen2 HDMI-1-1
+set $screen1 eDP-1
+set $screen2 HDMI-1
 set $home /home/mrdotb
 set $term alacritty
 set $browser brave-browser
@@ -164,7 +163,7 @@ exec --no-startup-id unclutter
 exec --no-startup-id setxkbmap -option caps:escape
 
 # redshift
-exec_always --no-startup-id redshift-script
+exec_always --no-startup-id $home/.local/bin/redshift-script
 
 # polybar bar
 exec_always --no-startup-id $home/.config/polybar/run.sh
