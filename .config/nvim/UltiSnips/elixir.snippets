@@ -17,5 +17,31 @@ end
 endsnippet
 
 snippet ins
-|> IO.inspect()
+IO.inspect($1)
+endsnippet
+
+snippet inss
+|> IO.inspect($1)
+endsnippet
+
+snippet %if
+<%= if ${1:true} do %>
+	$0
+<% else %>
+	$1
+<% end %>
+endsnippet
+
+snippet % "<% %>" w
+<% $0 %>
+endsnippet
+
+snippet %= "<%= %>" w
+<%= $0 %>
+endsnippet
+
+snippet @doc
+@doc """
+$0
+"""
 endsnippet
