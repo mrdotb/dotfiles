@@ -16,7 +16,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plugin Dev
 " Plug '~/.config/nvim/plugged/potion'
 " Plug '~/Projects/vim-markdown-folding'
-" Plug '/home/mrdotb/Projects/vim/vim-42header'
+Plug '/home/mrdotb/Projects/vim/vim-tailwindcss'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
@@ -26,6 +26,7 @@ Plug 'neomake/neomake'
     autocmd! BufWritePost * Neomake
   augroup END
 Plug 'mattn/emmet-vim'
+Plug 'valloric/matchtagalways'
 Plug 'godlygeek/tabular'
 Plug 'SirVer/ultisnips'
 
@@ -98,7 +99,9 @@ set inccommand=split
 
 syntax enable
 " Resize split when window is resized
-au VimResized * :wincmd =
+autocmd VimResized * :wincmd =
+" Close Preview window after completion is done
+autocmd CompleteDone * pclose
 
 " }}}
 " =============================================================================
@@ -194,6 +197,14 @@ nnoremap <leader>ee
   \ :set completefunc=emoji#complete<cr>a<C-x><C-u><bs><bs><bs>
 inoremap <leader>ee
   \ <esc>:set completefunc=emoji#complete<cr>a<C-x><C-u><bs><bs><bs>
+
+" -----------------------------------------------------------------------------
+"  vim-tailwind
+"  ----------------------------------------------------------------------------
+nnoremap <leader>tt
+  \ :set completefunc=tailwind#complete<cr>
+inoremap <leader>tt
+  \ <esc>:set completefunc=tailwind#complete<cr>a
 
 " -----------------------------------------------------------------------------
 "  repeat last cmd
@@ -323,6 +334,16 @@ let g:airline_powerline_fonts = 1
 colorscheme dracula
 
 " -----------------------------------------------------------------------------
+"  Matchtagalways
+"  ----------------------------------------------------------------------------
+
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'eelixir' : 1,
+    \ 'eex' : 1,
+    \ 'leex' : 1,
+    \}
+" -----------------------------------------------------------------------------
 "  Goyo
 "  ----------------------------------------------------------------------------
 function! s:goyo_enter()
@@ -357,8 +378,8 @@ let g:vim_markdown_folding_disabled = 1
 " -----------------------------------------------------------------------------
 "  Colorizer
 "  ----------------------------------------------------------------------------
-let g:colorizer_skip_comments = 1
-let g:colorizer_auto_filetype='scss,css,html,javascript'
+" let g:colorizer_skip_comments = 1
+" let g:colorizer_auto_filetype='scss,css,html,javascript'
 
 " -----------------------------------------------------------------------------
 "  UltiSnips
