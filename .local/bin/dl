@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -eo pipefail
+# simple cmd line with fzf to download from remote server using rsync
+function usage {
+    cat << __EOT__
+Usage: dl [user@ip] [dir]
+__EOT__
+}
+
+HOST=$1
+DIR=$2
+
+if [ -z $HOST ]; then usage && exit; fi
+
+REMOTE="$HOST:$DIR"
+
+rsync -a "$REMOTE" \
+    | awk '{for (i=5; i<NF; i++) printf $i " "; if (NF >= 4) print $NF; }'\
+    | fzf -m --height 50% \
+    | awk -v dir="$DIR" '{print dir$0}' \
+    | rsync -avP \
+      --no-relative \
+      -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+      --append-verify --progress \
+      --files-from - "$HOST:/" .
