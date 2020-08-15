@@ -29,6 +29,8 @@ Plug 'mattn/emmet-vim'
 Plug 'valloric/matchtagalways'
 Plug 'godlygeek/tabular'
 Plug 'SirVer/ultisnips'
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+" Plug 'dense-analysis/ale'
 
 " Colors & apparences
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -277,6 +279,7 @@ augroup ft_markdown
   " autocmd Filetype markdown set foldmethod=expr
   " autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
 augroup END
+let g:instant_markdown_autoscroll = 1
 
 " -----------------------------------------------------------------------------
 "  vimscript
@@ -322,7 +325,10 @@ augroup END
 " =============================================================================
 " Plugins settings {{{
 " =============================================================================
-"
+" -----------------------------------------------------------------------------
+"  Ale
+"  ----------------------------------------------------------------------------
+" let g:ale_fixers = { 'elixir': ['mix_format'] }
 " -----------------------------------------------------------------------------
 "  Powerline
 "  ----------------------------------------------------------------------------
