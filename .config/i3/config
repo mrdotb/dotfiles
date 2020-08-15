@@ -3,7 +3,8 @@
 
 set $mod Mod4
 set $screen1 eDP-1
-set $screen2 HDMI-1
+set $screen2 eDP-1
+# set $screen2 HDMI-1
 set $home /home/mrdotb
 set $term alacritty
 set $browser brave-browser
