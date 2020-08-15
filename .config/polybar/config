@@ -361,7 +361,7 @@ format-margin = 3
 
 [module/networkname]
 type = custom/script
-exec = nmcli -t -g device,name connection show --active | awk 'BEGIN{FS=":";}{if($1 == "wlp2s0"){printf $2} }'
+exec = nmcli -t -m tabular -f device,name connection show --active | awk 'BEGIN{FS=":";}{if($1 == "wlp2s0"){printf $2} }'
 interval = 3
 format-background = ${colors.active}
 format-underline = ${colors.background}
@@ -507,7 +507,7 @@ interval = 0.5
 ; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
 ; to find path to desired file
 ; Default reverts to thermal zone setting
-hwmon-path = /sys/devices/virtual/hwmon/hwmon4/temp1_input
+hwmon-path = /sys/devices/virtual/hwmon/hwmon5/temp1_input
 
 ; Base temperature for where to start the ramp (in degrees celsius)
 ; Default: 0
