@@ -29,6 +29,7 @@ alias octal="stat -c '%a %A %n'"
 alias untargz="tar -xvzf"
 alias szsh="source ~/.config/zsh/.zshrc"
 alias duck="browser duck"
+alias todo="vi ~/TODO.md"
 
 ## cfg
 alias pkg='nvim -o ~/.config/packages/crates.csv ~/.config/packages/pkg.csv'
