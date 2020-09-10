@@ -98,6 +98,8 @@ set incsearch
 set ignorecase
 set smartcase
 set inccommand=split
+" Buffer hidden
+set hidden
 
 syntax enable
 " Resize split when window is resized
