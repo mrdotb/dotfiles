@@ -76,6 +76,11 @@ function vpn() {
   cd $VPN && sudo openvpn "`echo $VPN`/`ls $VPN | grep "ovpn" | fzf`"
 }
 
+# Tmp
+function temp() {
+  vim +"set filetype=$1" /tmp/temp-$(date +'%Y%m%d-%H%M%S')
+}
+
 # Unlimited history
 # https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
 HISTFILE="$HOME/.config/zsh/.zsh_history"
