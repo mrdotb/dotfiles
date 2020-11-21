@@ -45,3 +45,10 @@ endsnippet
 snippet gt "gettext" w
 <%= gettext("${0:${VISUAL}}") %>
 endsnippet
+
+snippet case "case" w
+<%= case $1 do %>
+  <% $2 -> %> 
+<% end %>
+
+endsnippet
