@@ -57,12 +57,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Android
 export PATH="$HOME/Android/Sdk/platform-tools:$PATH"
 
-# Pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-export PYENV_ROOT="$HOME/.pyenv"
-
-# Rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-
-# Nvm
-export NVM_DIR="$HOME/.nvm"
+# Flutter
+export PATH="$HOME/Android/flutter/bin:$PATH"
