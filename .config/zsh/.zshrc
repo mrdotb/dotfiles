@@ -21,6 +21,10 @@ function git_branch {
   git rev-parse --abbrev-ref HEAD
 }
 
+function git_checkout {
+  git checkout $(git for-each-ref --sort=creatordate --format '%(refname:short)' refs/heads | fzf)
+}
+
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist

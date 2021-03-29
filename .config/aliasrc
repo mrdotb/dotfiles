@@ -32,7 +32,7 @@ alias duck="browser duck"
 alias todo="vi ~/TODO.md"
 
 ## cfg
-alias pkg='nvim -o ~/.config/packages/crates.csv ~/.config/packages/pkg.csv'
+# alias pkg='nvim -o ~/.config/packages/crates.csv ~/.config/packages/pkg.csv'
 alias bashrc='nvim ~/.bashrc'
 alias zshrc='nvim ~/.config/zsh/.zshrc'
 alias aliasrc='nvim ~/.config/aliasrc'
@@ -52,6 +52,7 @@ alias gc!='git commit -v --amend'
 alias gss='git status -s'
 alias gd='git diff'
 alias ga='git add'
+alias gcheck='git_checkout'
 
 ## yadm
 alias yss='yadm status -s'
