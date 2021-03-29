@@ -16,7 +16,6 @@ defp $1($2) do
 end
 endsnippet
 
-
 snippet map
 Enum.map($1, $2)
 endsnippet
@@ -49,20 +48,10 @@ snippet inss
 |> IO.inspect($1)
 endsnippet
 
-snippet %if
-<%= if ${1:true} do %>
-	$0
-<% else %>
-	$1
-<% end %>
-endsnippet
-
-snippet % "<% %>" w
-<% $0 %>
-endsnippet
-
-snippet %= "<%= %>" w
-<%= $0 %>
+snippet @moduledoc
+@moduledoc """
+$0
+"""
 endsnippet
 
 snippet @doc
@@ -81,4 +70,34 @@ snippet describe
 describe "$1" do
 	$2
 end
+endsnippet
+
+snippet if "add an if block" !b
+if ${1:condition} do
+  $0
+end
+endsnippet
+
+snippet ife "add an if-else block" !b
+if ${1:condition} do
+  $2
+else
+  $0
+end
+endsnippet
+
+snippet fn "insert an anonymous function" !i
+fn(${1:args}) -> ${0} end
+endsnippet
+
+snippet & "insert an anonymous function short syntax" !i
+&($1)$0
+endsnippet
+
+snippet ok "Insert ok tuple" !i
+{:ok, ${1:value}}$0
+endsnippet
+
+snippet err "Insert error tuple" !i
+{:error, ${1:value}}$0
 endsnippet

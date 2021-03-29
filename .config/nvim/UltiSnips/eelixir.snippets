@@ -46,6 +46,10 @@ snippet gt "gettext" w
 <%= gettext("${0:${VISUAL}}") %>
 endsnippet
 
+snippet dgt "dgettext" w
+<%= dgettext("${0:${VISUAL}}", "$1") %>
+endsnippet
+
 snippet case "case" w
 <%= case $1 do %>
   <% $2 -> %> 
