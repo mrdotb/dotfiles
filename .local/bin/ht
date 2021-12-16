@@ -9,7 +9,7 @@ if [ ! -z $TMUX ]; then
     exit 1
 fi
 
-workspace_dir=/home/mrdotb/.tmux/heytmux-workspaces
+workspace_dir=/home/john/.tmux/heytmux-workspaces
 
 workspace=$(ls $workspace_dir | fzf)
 # If we press esc in fzf exit

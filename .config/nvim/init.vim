@@ -9,39 +9,28 @@
 let mapleader = '\'
 let maplocalleader = '\'
 
+
 " =============================================================================
 " Vim plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
 " Plugin Dev
-" Plug '~/.config/nvim/plugged/potion'
-" Plug '~/Projects/vim-markdown-folding'
-Plug '/home/mrdotb/Projects/vim/vim-tailwindcss'
+Plug '/home/john/Projects/vim/vim-tailwindcss'
 
 " Syntax
+let g:polyglot_disabled = ['elixir']
 Plug 'sheerun/vim-polyglot'
-Plug 'masukomi/vim-markdown-folding'
-Plug 'neomake/neomake'
-  augroup localneomake
-    autocmd! BufWritePost * Neomake
-  augroup END
+Plug 'elixir-editors/vim-elixir'
 Plug 'mattn/emmet-vim'
 Plug 'valloric/matchtagalways'
-Plug 'godlygeek/tabular'
-Plug 'SirVer/ultisnips'
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-" Plug 'dense-analysis/ale'
 
 " Colors & apparences
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/Colorizer'
 Plug 'machakann/vim-highlightedyank'
-" Plug 'ap/vim-buftabline'
 
 " junegunn
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-emoji'
@@ -53,14 +42,13 @@ Plug 'edkolev/promptline.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-fireplace'
 
 " Misc
 Plug 'samoshkin/vim-mergetool'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'vim-scripts/DrawIt'
-Plug 'mrdotb/vim-42header'
 Plug 'vim-test/vim-test'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 
 call plug#end()
 
@@ -108,6 +96,9 @@ syntax enable
 autocmd VimResized * :wincmd =
 " Close Preview window after completion is done
 autocmd CompleteDone * pclose
+
+let g:python_host_prog = '~/.asdf/installs/python/2.7.18/bin/python'
+let g:python3_host_prog = '~/.asdf/installs/python/3.6.12/bin/python'
 
 " }}}
 " =============================================================================
@@ -185,11 +176,6 @@ nnoremap <silent> <leader>rg       :Rg<cr>
 nnoremap <silent> <leader>'        :Marks<cr>
 
 " -----------------------------------------------------------------------------
-"  Tabular
-"  ----------------------------------------------------------------------------
-noremap <leader>t :Tabular /
-
-" -----------------------------------------------------------------------------
 "  vim-test
 "  ----------------------------------------------------------------------------
 nmap <silent> t<C-n> :TestNearest<CR>
@@ -197,6 +183,7 @@ nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
+
 " -----------------------------------------------------------------------------
 "  REGISTER
 "  ----------------------------------------------------------------------------
@@ -225,64 +212,11 @@ inoremap <leader>tt
 "  ----------------------------------------------------------------------------
 nnoremap <leader><space> :!!<cr>
 
-" -----------------------------------------------------------------------------
-"  BROWSER
-"  ----------------------------------------------------------------------------
-" this use my custom script 
-" https://github.com/mrdotb/dotfiles/blob/master/.local/bin/browser
-" The function will take care of command vmode en motion
-function! s:Browser(site, arg)
-  let saved_unnamed_register = @@
-
-  if a:arg ==# 'v'
-    execute "normal! `<v`>y"
-    let query = @@
-  elseif a:arg ==# 'char'
-    execute "normal! `[v`]y"
-    let query = @@
-  else
-    let query = a:arg
-  endif
-  silent execute "!browser " . a:site . ' ' . query
-
-  let @@ = saved_unnamed_register
-endfunction
-
-function! s:Duck(arg)
-  call <SID>Browser('duck', a:arg)
-endfunction
-
-function! s:Fren(query)
-  call <SID>Browser('fren', a:arg)
-endfunction
-
-function! s:EnFr(query)
-  call <SID>Browser('enfr', a:arg)
-endfunction
-
-nnoremap <leader>d :set operatorfunc=<SID>Duck<cr>g@
-vnoremap <leader>d :<c-u>call <SID>Browser('duck', visualmode())<cr>
-command! -nargs=* Duck call <SID>Browser( 'duck', '<args>' )
-
-nnoremap <leader>fr :set operatorfunc=<SID>Fren<cr>g@
-vnoremap <leader>fr :<c-u>call <SID>Browser('fren', visualmode())<cr>
-command! -nargs=* Fr call <SID>Browser( 'fren', '<args>' )
-
-nnoremap <leader>en :set operatorfunc=<SID>Enfr<cr>g@
-vnoremap <leader>en :<c-u>call <SID>Browser('enfr', visualmode())<cr>
-command! -nargs=* En call <SID>Browser( 'enfr', '<args>' )
-
 " }}}
 " =============================================================================
 " Languages {{{
 " =============================================================================
-" -----------------------------------------------------------------------------
-"  eex and leex
-"  ----------------------------------------------------------------------------
-" augroup ft_eex
-"   autocmd!
-"   autocmd Filetype eelixir setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab 
-" augroup END
+
 " -----------------------------------------------------------------------------
 "  markdown
 "  ----------------------------------------------------------------------------
@@ -349,9 +283,7 @@ augroup END
 let g:mergetool_layout = 'mr'
 let g:mergetool_prefer_revision = 'local'
 " -----------------------------------------------------------------------------
-"  Ale
-"  ----------------------------------------------------------------------------
-" let g:ale_fixers = { 'elixir': ['mix_format'] }
+
 " -----------------------------------------------------------------------------
 "  Powerline
 "  ----------------------------------------------------------------------------
@@ -372,31 +304,6 @@ let g:mta_filetypes = {
     \ 'eex' : 1,
     \ 'leex' : 1,
     \}
-" -----------------------------------------------------------------------------
-"  Goyo
-"  ----------------------------------------------------------------------------
-function! s:goyo_enter()
-  if exists('$TMUX')
-    silent !tmux set status off
-  endif
-
-  set nocursorline
-  Limelight
-endfunction
-
-function! s:goyo_leave()
-  if exists('$TMUX')
-    silent !tmux set status on
-  endif
-
-  set cursorline
-  Limelight!
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-nnoremap <leader>g :Goyo<cr>
 
 " -----------------------------------------------------------------------------
 "  Polyglot
@@ -405,30 +312,201 @@ nnoremap <leader>g :Goyo<cr>
 let g:vim_markdown_folding_disabled = 1
 
 " -----------------------------------------------------------------------------
-"  Colorizer
+"  ale
 "  ----------------------------------------------------------------------------
-" let g:colorizer_skip_comments = 1
-" let g:colorizer_auto_filetype='scss,css,html,javascript'
+let g:ale_fixers = { 'elixir': ['mix_format'] }
+
 
 " -----------------------------------------------------------------------------
 "  UltiSnips
 "  ----------------------------------------------------------------------------
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-nnoremap <leader>u :UltiSnipsEdit<cr>
+" nnoremap <leader>u :UltiSnipsEdit<cr>
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
 
 " -----------------------------------------------------------------------------
 "  highlightedyank
 "  ----------------------------------------------------------------------------
 let g:highlightedyank_highlight_duration = 400
 
+
 " -----------------------------------------------------------------------------
-"  vim-42header
-"  ----------------------------------------------------------------------------
-let g:hdr42mail = "bchaleil@42.fr"
-let g:hdr42user = "bchaleil"
+"  COC
+" =============================================================================
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=1
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " }}}
-" =============================================================================

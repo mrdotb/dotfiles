@@ -16,6 +16,22 @@ defp $1($2) do
 end
 endsnippet
 
+snippet defl
+def $1(assigns) do
+	~H"""
+	$2
+	"""
+end
+endsnippet
+
+snippet defpl
+defp $1(assigns) do
+	~H"""
+	$2
+	"""
+end
+endsnippet
+
 snippet map
 Enum.map($1, $2)
 endsnippet
@@ -85,6 +101,13 @@ else
   $0
 end
 endsnippet
+
+snippet cond "add a cond block" !b
+cond do
+  $0
+end
+endsnippet
+
 
 snippet fn "insert an anonymous function" !i
 fn(${1:args}) -> ${0} end

@@ -302,4 +302,5 @@ set -g mode-keys vi
 
 # iexsearch
 #session_id window_id pane_id pane_current_command
-bind C-r run "bash ~/.iex-history/iex-history.sh #{session_name} #{window_id} #D #{pane_current_command}"
+# bind C-r run "bash ~/.iex-history/iex-history.sh #{session_name} #{window_id} #D #{pane_current_command}"
+bind C-r run "bash ~/.local/bin/iex-history | fzf-tmux"

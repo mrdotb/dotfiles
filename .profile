@@ -52,10 +52,13 @@ export ZDOTDIR="$HOME/.config/zsh"
 export _Z_DATA="$ZDOTDIR/.z"
 
 # Rust add to path
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # Android
 export PATH="$HOME/Android/Sdk/platform-tools:$PATH"
 
 # Flutter
 export PATH="$HOME/Android/flutter/bin:$PATH"
+. "$HOME/.cargo/env"
+
+# Pass
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
