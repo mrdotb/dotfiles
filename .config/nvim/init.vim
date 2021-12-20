@@ -21,7 +21,6 @@ Plug '/home/john/Projects/vim/vim-tailwindcss'
 let g:polyglot_disabled = ['elixir']
 Plug 'sheerun/vim-polyglot'
 Plug 'elixir-editors/vim-elixir'
-Plug 'mattn/emmet-vim'
 Plug 'valloric/matchtagalways'
 
 " Colors & apparences
@@ -282,7 +281,6 @@ augroup END
 "  ----------------------------------------------------------------------------
 let g:mergetool_layout = 'mr'
 let g:mergetool_prefer_revision = 'local'
-" -----------------------------------------------------------------------------
 
 " -----------------------------------------------------------------------------
 "  Powerline
@@ -311,21 +309,10 @@ let g:mta_filetypes = {
 " Disable the polyglot markdown folding
 let g:vim_markdown_folding_disabled = 1
 
-" -----------------------------------------------------------------------------
-"  ale
-"  ----------------------------------------------------------------------------
-let g:ale_fixers = { 'elixir': ['mix_format'] }
-
 
 " -----------------------------------------------------------------------------
-"  UltiSnips
+"  Coc-snippets
 "  ----------------------------------------------------------------------------
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" nnoremap <leader>u :UltiSnipsEdit<cr>
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -339,6 +326,9 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
+" Add shortcut to edit snippets
+nnoremap <leader>ec :tabnew ~/.config/nvim/UltiSnips<cr>
+
 
 " -----------------------------------------------------------------------------
 "  highlightedyank
@@ -347,7 +337,7 @@ let g:highlightedyank_highlight_duration = 400
 
 
 " -----------------------------------------------------------------------------
-"  COC
+"  Coc config
 " =============================================================================
 
 " Some servers have issues with backup files, see #649.
