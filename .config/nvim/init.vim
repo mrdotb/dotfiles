@@ -46,8 +46,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'samoshkin/vim-mergetool'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-test/vim-test'
+
+" Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+Plug 'neoclide/coc-emmet', {'do': 'yarn install && yarn build'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install && yarn prepare'}
+
 
 call plug#end()
 
