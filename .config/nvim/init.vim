@@ -18,9 +18,9 @@ call plug#begin('~/.config/nvim/plugged')
 Plug '/home/john/Projects/vim/vim-tailwindcss'
 
 " Syntax
-let g:polyglot_disabled = ['elixir']
+" let g:polyglot_disabled = ['elixir']
 Plug 'sheerun/vim-polyglot'
-Plug 'elixir-editors/vim-elixir'
+" Plug 'elixir-editors/vim-elixir'
 Plug 'valloric/matchtagalways'
 
 " Colors & apparences
@@ -113,8 +113,8 @@ let g:python3_host_prog = '~/.asdf/installs/python/3.6.12/bin/python'
 "  Basic Mappings
 "  ----------------------------------------------------------------------------
 " use magic regex by default in search
-nnoremap / /\v
-nnoremap ? ?\v
+" nnoremap / /\v
+" nnoremap ? ?\v
 
 " edit vimrc
 nnoremap <leader>ev :tabnew $MYVIMRC<cr>

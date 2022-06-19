@@ -56,8 +56,7 @@ export _Z_DATA="$ZDOTDIR/.z"
 # Android
 export PATH="$HOME/Android/Sdk/platform-tools:$PATH"
 
-# Flutter
-export PATH="$HOME/Android/flutter/bin:$PATH"
+# Cargo
 . "$HOME/.cargo/env"
 
 # Pass

@@ -64,6 +64,14 @@ snippet inss
 |> IO.inspect($1)
 endsnippet
 
+snippet filter
+Enum.filter($1)
+endsnippet
+
+snippet filterr
+|> Enum.filter($1)
+endsnippet
+
 snippet @moduledoc
 @moduledoc """
 $0

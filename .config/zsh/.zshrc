@@ -22,7 +22,7 @@ function git_branch {
 }
 
 function git_checkout {
-  git checkout $(git for-each-ref --sort=creatordate --format '%(refname:short)' refs/heads | fzf)
+  git checkout $(git for-each-ref --sort=-creatordate --format '%(refname:short)' refs/heads | fzf)
 }
 
 autoload -Uz compinit
