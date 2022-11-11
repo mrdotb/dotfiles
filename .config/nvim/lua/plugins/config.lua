@@ -1,0 +1,6 @@
+require('plugins.fzf')
+require('plugins.treesitter')
+require('plugins.emoji')
+require('plugins.test')
+require('plugins.mergetool')
+require('plugins.coc')

@@ -13,7 +13,18 @@ snippet link
 endsnippet
 
 snippet code
-\`\`\`$1
-$2
-\`\`\`
+{{< code language="$1" title="$2" >}}
+$3
+{{< /code >}}
+endsnippet
+
+snippet newsletter
+{{< newsletter >}}
+endsnippet
+
+snippet lightbox
+{{< lightbox
+  src="$1"
+  alt="$2"
+>}}
 endsnippet

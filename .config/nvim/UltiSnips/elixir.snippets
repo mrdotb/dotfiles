@@ -72,6 +72,14 @@ snippet filterr
 |> Enum.filter($1)
 endsnippet
 
+snippet uniq
+Enum.uniq($1)
+endsnippet
+
+snippet uniqq
+|> Enum.uniq()
+endsnippet
+
 snippet @moduledoc
 @moduledoc """
 $0
@@ -116,7 +124,6 @@ cond do
 end
 endsnippet
 
-
 snippet fn "insert an anonymous function" !i
 fn(${1:args}) -> ${0} end
 endsnippet
@@ -131,4 +138,20 @@ endsnippet
 
 snippet err "Insert error tuple" !i
 {:error, ${1:value}}$0
+endsnippet
+
+snippet rpry "require IEx and pry" b
+require IEx; IEx.pry
+endsnippet
+
+snippet pry "IEx.pry" b
+IEx.pry
+endsnippet
+
+snippet explain "Ecto helpers" b
+Ecto.Adapters.SQL.explain(Repo, :all, query, buffers: true, analyze: true)
+|> IO.puts()
+
+{txt, _} = Ecto.Adapters.SQL.to_sql(:all, Repo, query)
+IO.puts(txt)
 endsnippet
