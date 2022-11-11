@@ -302,4 +302,4 @@ set -g mouse on
 
 # iexsearch
 #session_id window_id pane_id pane_current_command
-bind C-r run-shell -b "bash ~/.iex-history/iex-history.sh #{session_name} #{window_id} #D #{pane_current_command}"
+bind C-r run-shell -b "bash ~/Projects/elixir/iex-history/iex-history.sh #{session_name} #{window_id} #D #{pane_current_command}"
