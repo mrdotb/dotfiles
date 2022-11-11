@@ -51,7 +51,9 @@ export VPN="$HOME/.config/vpn"
 export ZDOTDIR="$HOME/.config/zsh"
 export _Z_DATA="$ZDOTDIR/.z"
 
-# Rust add to path
+# ASDF build erland doc
+# https://mrdotb.com/tils/asdf-elixir-get-erlang-doc/
+export KERL_BUILD_DOCS=yes
 
 # Android
 export PATH="$HOME/Android/Sdk/platform-tools:$PATH"
