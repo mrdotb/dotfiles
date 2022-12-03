@@ -31,12 +31,11 @@ alias duck="browser duck"
 alias todo="vi ~/TODO.md"
 
 ## cfg
-# alias pkg='nvim -o ~/.config/packages/crates.csv ~/.config/packages/pkg.csv'
 alias bashrc='nvim ~/.bashrc'
 alias zshrc='nvim ~/.config/zsh/.zshrc'
 alias aliasrc='nvim ~/.config/aliasrc'
 alias profile='nvim ~/.profile'
-alias vimrc='nvim ~/.config/nvim/init.vim'
+alias vimrc='nvim ~/.config/nvim/init.lua'
 alias i3config='nvim ~/.config/i3/config'
 alias polybarconf='nvim ~/.config/polybar/config'
 alias tmuxconf='nvim ~/.tmux.conf.local'

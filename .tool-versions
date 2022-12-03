@@ -1,8 +1,9 @@
-elixir 1.13.4-otp-24
-erlang 24.3.3
+elixir 1.14.2-otp-25
+erlang 25.1.2
 golang 1.17.2
-nodejs 14.15.3
+nodejs 17.9.1
 python 3.6.12 2.7.18
 ruby 2.7.2
-neovim 0.7.0
+neovim 0.8.0
 flutter 2.8.1-stable
+postgres 14.5

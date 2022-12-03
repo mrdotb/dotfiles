@@ -57,6 +57,10 @@ export KERL_BUILD_DOCS=yes
 
 # Android
 export PATH="$HOME/Android/Sdk/platform-tools:$PATH"
+export PATH="$HOME/Android/Sdk/tools/bin:$PATH"
+export PATH="$HOME/Android/Sdk/tools:$PATH"
+export PATH="$HOME/Android/Sdk/cmdline-tools/latest/bin:$PATH"
+export PATH="$HOME/Android/Sdk/emulator:$PATH"
 
 # Cargo
 . "$HOME/.cargo/env"

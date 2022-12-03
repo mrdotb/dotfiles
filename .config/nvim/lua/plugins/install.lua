@@ -10,6 +10,7 @@ Plug 'machakann/vim-highlightedyank'
 
 -- Syntax
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
+Plug 'nvim-treesitter/playground'
 
 -- Coc
 Plug('neoclide/coc.nvim', { branch  = 'release'})
@@ -22,7 +23,6 @@ Plug('junegunn/fzf', { dir = '~/.fzf',  ['do'] = './install --all' })
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-emoji'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/vim-peekaboo'
 
 -- tpope
 Plug 'tpope/vim-commentary'
