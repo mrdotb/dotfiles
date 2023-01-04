@@ -40,9 +40,10 @@ export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_OPTS='--height 100% --border' 
 
 # NVIM
-export MYVIMRC="$HOME/.config/nvim/init.vim"
+export MYVIMRC="$HOME/.config/nvim/init.lua"
 
 # Openvpn
 export VPN="$HOME/.config/vpn"
