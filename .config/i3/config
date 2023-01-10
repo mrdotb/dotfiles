@@ -161,7 +161,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id pulseaudio
 exec --no-startup-id dunst
 exec --no-startup-id unclutter
-exec --no-startup-id setxkbmap -option caps:escape
+exec --no-startup-id setxkbmap -option caps:super
+exec --no-startup-id xcape -e "Super_L=Escape"
 
 # redshift
 exec_always --no-startup-id $home/.local/bin/redshift-script
