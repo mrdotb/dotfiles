@@ -162,10 +162,10 @@ exec --no-startup-id pulseaudio
 exec --no-startup-id dunst
 exec --no-startup-id unclutter
 exec --no-startup-id setxkbmap -option caps:super
-exec --no-startup-id xcape -e "Super_L=Escape"
+exec --no-startup-id xcape -e Super_L=Escape
 
 # redshift
-exec_always --no-startup-id $home/.local/bin/redshift-script
+# exec_always --no-startup-id $home/.local/bin/redshift-script
 
 # polybar bar
 exec_always --no-startup-id $home/.config/polybar/run.sh
