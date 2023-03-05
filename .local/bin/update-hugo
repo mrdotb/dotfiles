@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# vim: noai:ts=4:sw=4:expandtab
+
+# exit when a command fails instead of continuing
+set -o errexit
+# exit when access an unset variable
+set -o nounset
+# make pipeline fail exit when access an unset variable
+set -o pipefail
+
+# debug mode if ENV TRACE
+if [[ -n "${TRACE-}" ]]; then
+    set -o xtrace
+fi
+
+if [[ "" =~ ^-*h(elp)?$ ]]; then
+    echo 'Usage: sudo update-hugo
+
+Update hugo if version updated.
+
+'
+    exit
+fi
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+main() {
+    hugo_extended_latest_url=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest \
+        | jq -r '.assets | map(select(.name | contains("extended") and contains("amd64.deb"))) | .[0].browser_download_url')
+    wget -O /tmp/hugo-extended-latest.deb $hugo_extended_latest_url
+    dpkg -i /tmp/hugo-extended-latest.deb
+}
+
+main "$@"
