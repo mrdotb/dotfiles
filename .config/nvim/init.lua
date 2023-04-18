@@ -17,3 +17,6 @@ require('user.settings')
 
 -- Load keymaps
 require('user.keymaps')
+
+-- Load filetype
+require('user.filetype')

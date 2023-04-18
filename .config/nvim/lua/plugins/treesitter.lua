@@ -17,6 +17,7 @@ ts.setup({
     'json',
     'lua',
     'make',
+    'markdown',
     'php',
     'python',
     'ruby',
@@ -34,3 +35,8 @@ ts.setup({
     persist_queries = false -- Whether the query persists across vim sessions
   }
 })
+
+-- Set mdx to markdown
+vim.treesitter.language.register('markdown', 'mdx')
+-- Set livemd to markdown
+vim.treesitter.language.register('markdown', 'livemd')
