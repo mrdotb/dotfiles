@@ -40,3 +40,5 @@ ts.setup({
 vim.treesitter.language.register('markdown', 'mdx')
 -- Set livemd to markdown
 vim.treesitter.language.register('markdown', 'livemd')
+-- Set eelixir to html
+vim.treesitter.language.register('html', 'eelixir')
