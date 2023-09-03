@@ -4,6 +4,6 @@ golang 1.17.2
 nodejs 17.9.1
 python 3.6.12 2.7.18
 ruby 3.2.1
-neovim 0.9.0
+neovim 0.9.1
 flutter 2.8.1-stable
 postgres 14.5
