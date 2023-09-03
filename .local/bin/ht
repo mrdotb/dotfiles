@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Simple wrapper around heytmux
-#set -x
+# set -x
 # vim: noai:ts=4:sw=4:expandtab
 
 # Check if already inside tmux
@@ -12,13 +12,15 @@ fi
 workspace_dir=/home/john/.tmux/heytmux-workspaces
 
 workspace=$(ls $workspace_dir | fzf)
+
 # If we press esc in fzf exit
 if [ -z $workspace ]; then
     exit 0
 fi
+
 workspace_name=$(echo $workspace | gawk '{gsub(".yml","", $0);print $0}')
 
-tmux list-sessions | grep $workspace_name
+tmux list-session -F "#{session_name}" | grep -E "^$workspace_name$"
 if [ $? -eq 0 ]; then
     echo "This session already exist."
     exit 1
