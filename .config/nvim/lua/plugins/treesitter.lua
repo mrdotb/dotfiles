@@ -21,6 +21,7 @@ ts.setup({
     'php',
     'python',
     'ruby',
+    'rust',
     'sql',
     'toml',
     'tsx',
