@@ -28,6 +28,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-eunuch'
 
 -- Generate a prompt
 Plug 'edkolev/promptline.vim'
@@ -37,5 +38,6 @@ Plug 'valloric/matchtagalways'
 Plug 'samoshkin/vim-mergetool'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-test/vim-test'
+Plug 'ellisonleao/glow.nvim'
 
 vim.call('plug#end')
