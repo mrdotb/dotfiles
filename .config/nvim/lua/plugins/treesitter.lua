@@ -11,6 +11,7 @@ ts.setup({
     'eex',
     'elixir',
     'erlang',
+    'go',
     'heex',
     'html',
     'javascript',
@@ -26,8 +27,7 @@ ts.setup({
     'toml',
     'tsx',
     'typescript',
-    'vim',
-    'yaml'
+    'vim'
   },
   playground = {
     enable = true,

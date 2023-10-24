@@ -11,6 +11,7 @@ Plug 'machakann/vim-highlightedyank'
 -- Syntax
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 Plug 'nvim-treesitter/playground'
+Plug 'towolf/vim-helm'
 
 -- Coc
 Plug('neoclide/coc.nvim', { branch  = 'release'})
