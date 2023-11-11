@@ -20,14 +20,14 @@ fi
 
 workspace_name=$(echo $workspace | gawk '{gsub(".yml","", $0);print $0}')
 
+# Check if we are inside TMUX already
 tmux list-session -F "#{session_name}" | grep -E "^$workspace_name$"
 if [ $? -eq 0 ]; then
     echo "This session already exist."
     exit 1
 fi
 
-# Check if we are inside TMUX already
 tmux new-session -d -s $workspace_name
 tmux send-keys -t $workspace_name "heytmux ${workspace_dir}/${workspace}" 'enter'
-tmux send-keys -t $workspace_name "tmux kill-window -t "${workspace_name}:1"" 'enter'
+sleep 1 && tmux kill-window -t "${workspace_name}:1"
 tmux attach -t $workspace_name
