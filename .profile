@@ -71,3 +71,6 @@ export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
 # openai
 export OPENAI_API_KEY=$(cat $HOME/.config/.open_ai_key)
+
+# Age
+export SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt

@@ -1,8 +1,15 @@
 # mrdotb's config for the Z Shell
 
 autoload -U colors && colors
+
 # Load promptline
-[ -f "$ZDOTDIR/.promptline.sh" ] && source "$ZDOTDIR/.promptline.sh"
+# [ -f "$ZDOTDIR/.promptline.sh" ] && source "$ZDOTDIR/.promptline.sh"
+
+# Load starship
+eval "$(starship init zsh)"
+
+# Load zsh autosuggestion
+[ -f "$ZDOTDIR/zsh-autosuggestion/zsh-autosuggestions.zsh" ] && source "$ZDOTDIR/zsh-autosuggestion/zsh-autosuggestions.zsh"
 
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
@@ -16,6 +23,9 @@ autoload -U colors && colors
 # asdf
 [ -s "$HOME/.asdf/asdf.sh" ] && \. "$HOME/.asdf/asdf.sh"
 fpath=(${ASDF_DIR}/completions $fpath)
+
+# docker
+fpath=(${ZDOTDIR}/completions $fpath)
 
 function git_branch {
   git rev-parse --abbrev-ref HEAD
@@ -98,8 +108,3 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-
-# pnpm
-export PNPM_HOME="/home/john/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end

@@ -3,7 +3,8 @@ erlang 25.3.2.6
 golang 1.17.2
 nodejs 17.9.1
 python 3.6.12 2.7.18
-ruby 3.2.1
+ruby 3.2.2
 neovim 0.9.1
 flutter 2.8.1-stable
 postgres 14.5
+kubectl 1.27.4
