@@ -16,6 +16,7 @@ alias diff="diff --color=auto"
 # Handy
 alias v="$EDITOR"
 alias t="tmux"
+alias k="kubectl"
 alias i="sudo apt install"
 alias ii="sudo apt remove"
 alias u="sudo apt update"
@@ -27,7 +28,6 @@ alias pbpaste='xsel --clipboard --output'
 alias octal="stat -c '%a %A %n'"
 alias untargz="tar -xvzf"
 alias szsh="source ~/.config/zsh/.zshrc"
-alias duck="browser duck"
 alias todo="vi ~/TODO.md"
 
 ## cfg
