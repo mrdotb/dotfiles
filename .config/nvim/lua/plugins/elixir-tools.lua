@@ -11,7 +11,6 @@ bind("v", "<space>em", ":ElixirExpandMacro<cr>", { buffer = true, noremap = true
 
 -- Config
 local elixir = require("elixir")
-local elixirls = require("elixir.elixirls")
 
 elixir.setup {
   nextls = {
@@ -21,11 +20,6 @@ elixir.setup {
     enable = true
   },
   elixirls = {
-    settings = elixirls.settings {
-      dialyzerEnabled = false,
-      fetchDeps = true,
-      enableTestLenses = false,
-      suggestSpecs = true,
-    }
+    enable = true
   }
 }
