@@ -27,14 +27,6 @@ fpath=(${ASDF_DIR}/completions $fpath)
 # docker
 fpath=(${ZDOTDIR}/completions $fpath)
 
-function git_branch {
-  git rev-parse --abbrev-ref HEAD
-}
-
-function git_checkout {
-  git checkout $(git for-each-ref --sort=-creatordate --format '%(refname:short)' refs/heads | fzf)
-}
-
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
@@ -78,14 +70,27 @@ echo -ne '\e[5 q'
 # Use beam shape cursor for each new prompt.
 preexec() { echo -ne '\e[5 q' ;}
 
-# Vpn
-function vpn() {
-  cd $VPN && sudo openvpn "`echo $VPN`/`ls $VPN | grep "ovpn" | fzf`"
-}
+# Helpers functions
 
-# Tmp
 function temp() {
   vim +"set filetype=$1" /tmp/temp-$(date +'%Y%m%d-%H%M%S')
+}
+
+function git_branch {
+  git rev-parse --abbrev-ref HEAD
+}
+
+function git_checkout {
+  git checkout $(git for-each-ref --sort=-creatordate --format '%(refname:short)' refs/heads | fzf)
+}
+
+function ksecret {
+  if [ $# -lt 2 ]; then
+    echo "Usage: ksecret namespace secret"
+    return 1
+  fi
+
+  kubectl get secret -n $1 $2 -o json | jq '.data | map_values(@base64d)'
 }
 
 # Unlimited history
