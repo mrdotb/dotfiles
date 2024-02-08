@@ -20,6 +20,7 @@ elixir.setup {
     enable = true
   },
   elixirls = {
-    enable = true
+    enable = true,
+    cmd = "/home/john/.local/share/nvim/mason/bin/elixir-ls"
   }
 }
