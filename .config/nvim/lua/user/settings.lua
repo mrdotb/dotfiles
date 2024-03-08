@@ -2,7 +2,7 @@
 vim.opt.termguicolors = true
 
 -- Set dracula colorscheme
-vim.cmd('colorscheme dracula')
+vim.cmd('colorscheme tokyonight-moon')
 
 -- Set powerline fonts
 vim.cmd([[let g:airline_powerline_fonts=1]])
