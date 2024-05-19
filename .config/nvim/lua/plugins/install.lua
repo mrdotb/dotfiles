@@ -19,13 +19,13 @@ Plug 'mhanberg/output-panel.nvim'
 
 -- nvm cmp
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
+-- Plug 'hrsh7th/cmp-nvim-lsp'
+-- Plug 'hrsh7th/cmp-buffer'
+-- Plug 'hrsh7th/cmp-path'
+-- Plug 'hrsh7th/cmp-cmdline'
+-- Plug 'hrsh7th/nvim-cmp'
 Plug 'SirVer/ultisnips'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+-- Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 -- mason
 Plug 'williamboman/mason.nvim'
@@ -39,7 +39,7 @@ Plug 'junegunn/vim-emoji'
 Plug 'junegunn/goyo.vim'
 
 -- tpope
-Plug 'tpope/vim-commentary'
+-- Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
@@ -53,5 +53,7 @@ Plug 'samoshkin/vim-mergetool'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-test/vim-test'
 Plug 'ellisonleao/glow.nvim'
+
+Plug 'github/copilot.vim'
 
 vim.call('plug#end')
