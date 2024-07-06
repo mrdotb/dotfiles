@@ -52,6 +52,7 @@ alias gss='git status -s'
 alias gd='git diff'
 alias ga='git add'
 alias gcheck='git_checkout'
+alias gtags='git for-each-ref --sort=creatordate --format "%(creatordate:short) %(refname:short)" refs/tags'
 
 ## yadm
 alias yss='yadm status -s'

@@ -39,7 +39,7 @@ Plug 'junegunn/vim-emoji'
 Plug 'junegunn/goyo.vim'
 
 -- tpope
--- Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
