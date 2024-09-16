@@ -1,0 +1,30 @@
+[env]
+
+[tools]
+elixir = '1.17.2-otp-27'
+erlang = '27'
+golang = '1.17.2'
+nodejs = '21'
+python = ['3.12.0', '2.7.18']
+ruby = '3.2.2'
+neovim = '0.10.1'
+postgres = '16.2'
+kubectl = '1.27.4'
+
+# Cargo packages
+"cargo:ripgrep" = "latest"
+"cargo:fd-find" = "latest"
+"cargo:miniserve" = "latest"
+"cargo:du-dust" = "latest"
+"cargo:bat" = "latest"
+"cargo:kmeans_colors" = "latest"
+"cargo:pastel" = "latest"
+"cargo:genact" = "latest"
+"cargo:xsv" = "latest"
+
+# Npm packages
+"npm:prettier" = "latest"
+"npm:verdaccio" = "latest"
+
+[settings]
+experimental = true

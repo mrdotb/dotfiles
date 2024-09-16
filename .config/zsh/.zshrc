@@ -21,8 +21,8 @@ eval "$(starship init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # asdf
-[ -s "$HOME/.asdf/asdf.sh" ] && \. "$HOME/.asdf/asdf.sh"
-fpath=(${ASDF_DIR}/completions $fpath)
+#[ -s "$HOME/.asdf/asdf.sh" ] && \. "$HOME/.asdf/asdf.sh"
+#fpath=(${ASDF_DIR}/completions $fpath)
 
 # docker
 fpath=(${ZDOTDIR}/completions $fpath)
@@ -121,3 +121,11 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Load git-extras
+if [ -f ~/.compiled/git-extras/etc/git-extras-completion.zsh ]; then
+  source ~/.compiled/git-extras/etc/git-extras-completion.zsh
+fi
+
+# Mise
+eval "$(/home/john/.local/bin/mise activate zsh)"
