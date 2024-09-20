@@ -25,6 +25,7 @@ kubectl = '1.27.4'
 # Npm packages
 "npm:prettier" = "latest"
 "npm:verdaccio" = "latest"
+"npm:insect" = "latest"
 
 [settings]
 experimental = true
