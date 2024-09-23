@@ -1,0 +1,45 @@
+[user]
+	signinkey = 81EF89F387D9057D
+	email = hello@mrdotb.com
+	name = mrdotb
+[merge]
+	tool = vim_mergetool
+	conflictstyle = diff3
+
+[mergetool "vim_mergetool"]
+	cmd = vim -f -c "MergetoolStart" "$MERGED" "$BASE" "$LOCAL" "$REMOTE"
+	trustExitCode = true
+
+; [core]
+; 	pager = delta
+
+; [delta]
+; 	features = side-by-side line-numbers decorations
+; 	syntax-theme = Dracula
+; 	plus-style = syntax "#003800"
+; 	minus-style = syntax "#3f0001"
+
+; [delta "decorations"]
+; 	commit-decoration-style = bold yellow box ul
+; 	file-style = bold yellow ul
+; 	file-decoration-style = none
+; 	hunk-header-decoration-style = cyan box ul
+
+; [delta "line-numbers"]
+; 	line-numbers-left-style = cyan
+; 	line-numbers-right-style = cyan
+; 	line-numbers-minus-style = 124
+; 	line-numbers-plus-style = 28
+
+; [interactive]
+; 	diffFilter = delta --color-only
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main
