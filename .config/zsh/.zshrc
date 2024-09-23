@@ -128,4 +128,4 @@ if [ -f ~/.compiled/git-extras/etc/git-extras-completion.zsh ]; then
 fi
 
 # Mise
-eval "$(/home/john/.local/bin/mise activate zsh)"
+eval "$(~/.local/bin/mise activate zsh)"
