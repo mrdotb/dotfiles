@@ -3,8 +3,8 @@
 [tools]
 elixir = '1.17.2-otp-27'
 erlang = '27'
-golang = '1.17.2'
 nodejs = '21'
+golang = '1.23'
 python = ['3.12.0', '2.7.18']
 ruby = '3.2.2'
 neovim = '0.10.1'
@@ -21,11 +21,15 @@ kubectl = '1.27.4'
 "cargo:pastel" = "latest"
 "cargo:genact" = "latest"
 "cargo:xsv" = "latest"
+"cargo:hexyl" = "latest"
 
 # Npm packages
 "npm:prettier" = "latest"
 "npm:verdaccio" = "latest"
 "npm:insect" = "latest"
+
+# Go packages
+"go:github.com/evilmartians/lefthook" = "latest"
 
 [settings]
 experimental = true
