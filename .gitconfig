@@ -43,3 +43,5 @@
 	required = true
 [init]
 	defaultBranch = main
+[diff]
+	tool = meld

@@ -129,3 +129,6 @@ fi
 
 # Mise
 eval "$(~/.local/bin/mise activate zsh)"
+
+# bun completions
+[ -s "/home/john/.bun/_bun" ] && source "/home/john/.bun/_bun"
