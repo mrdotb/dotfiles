@@ -68,3 +68,9 @@ vim.opt.shiftwidth = 2
 
 -- Set autoindent like tabstop
 vim.opt.shiftwidth = 0
+
+-- Prepend mise shims to PATH
+vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+
+-- Open vim diagnostic
+vim.keymap.set('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)

@@ -19,13 +19,7 @@ Plug 'mhanberg/output-panel.nvim'
 
 -- nvm cmp
 Plug 'neovim/nvim-lspconfig'
--- Plug 'hrsh7th/cmp-nvim-lsp'
--- Plug 'hrsh7th/cmp-buffer'
--- Plug 'hrsh7th/cmp-path'
--- Plug 'hrsh7th/cmp-cmdline'
--- Plug 'hrsh7th/nvim-cmp'
 Plug 'SirVer/ultisnips'
--- Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 -- mason
 Plug 'williamboman/mason.nvim'
@@ -44,8 +38,8 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 
--- Generate a prompt
-Plug 'edkolev/promptline.vim'
+-- precognition
+Plug 'tris203/precognition.nvim'
 
 -- Misc
 Plug 'valloric/matchtagalways'
